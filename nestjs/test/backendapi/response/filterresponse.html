@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="module">
+    const url = 'http://localhost:3000/response/filterresponse';
+    async function test() {
+            //Adds filterresponse to the responseId.
+
+            const data = {
+                responseId: "responseid3992ba04b4114",
+                filterResponse: "Female###18###Glasses"
+            };
+
+            const headers = {
+                'Content-Type': 'application/json'
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: 'PATCH',
+                    headers: headers,
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const responseData = await response.json();
+                console.log('Response Data:', responseData);
+                // Handle the response data here
+            } catch (error) {
+                console.error('Fetch Error:', error);
+                // Handle any errors here
+            }
+        }
+    
+        test();
+  </script> 
+</head>
+<body>
+  
+</body>
+</html>

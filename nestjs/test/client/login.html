@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="module">
+    const url = 'http://localhost:3000/auth/login';
+    async function test() {
+            
+
+            const data = {
+                username: 'test@example.org',
+                password: '123'
+            };
+
+            const headers = {
+                'Content-Type': 'application/json'
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: headers,
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const responseData = await response.json();
+                console.log('Response Data:', responseData);
+                // Handle the response data here
+            } catch (error) {
+                console.error('Fetch Error:', error);
+                // Handle any errors here
+            }
+        }
+    
+        test();
+  </script> 
+</head>
+<body>
+  
+</body>
+</html>
+

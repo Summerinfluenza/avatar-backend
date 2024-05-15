@@ -1,0 +1,26 @@
+
+version: '3.3'
+services:
+  mongo:
+    image: mongo
+    restart: unless-stopped
+    container_name: avatair-mongo-dev
+    environment:
+       MONGO_INITDB_ROOT_USERNAME: root
+       MONGO_INITDB_ROOT_PASSWORD: changeme
+    ports:
+      - '127.0.0.1:27017:27017' 
+      
+
+  mongo-express:
+    image: mongo-express
+    container_name: avatair-mongoexpress-dev
+    restart: unless-stopped
+    ports:
+      - '127.0.0.1:8081:8081'      
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://root:changeme@mongo:27017/
+    depends_on:
+      - mongo
+    #volumes:
+    #  - ./dbdata:/data/db
