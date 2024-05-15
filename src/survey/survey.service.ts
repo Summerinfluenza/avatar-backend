@@ -78,7 +78,7 @@ export class SurveyService {
         const surveyId = query["_id"];
         try {
             await this.responseModel.deleteMany({ "surveyId": surveyId}).exec();
-            return this.surveyModel.findOneAndDelete(surveyId).exec();
+            return this.surveyModel.findOneAndDelete(query).exec();
         } catch (Error) {
             throw new InternalServerErrorException('Internal Server Error');
         }
