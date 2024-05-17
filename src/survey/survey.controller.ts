@@ -19,7 +19,7 @@ export class SurveyController {
     @UseGuards(AuthGuard("jwt"))
     @ApiBearerAuth()
     @Get('/')
-    @ApiOperation({ description: "Get all surveys created by the logged in account. Accepts an access token." })
+    @ApiOperation({ description: "Gets all surveys created by the logged in account. Accepts an access token." })
     async findAllSurveys(@Req() req: Request): Promise<any> {
         const userId = sqlstring.escape(req.user['sub']).replace(/'/g, "");
 
@@ -44,7 +44,7 @@ export class SurveyController {
     @UseGuards(AuthGuard(["jwt", "isactive"]))
     @ApiBearerAuth()
     @Get('/:id')
-    @ApiOperation({ description: "Get a survey. Requires authentication unless the survey is *activated*. Accepts an access token." })
+    @ApiOperation({ description: "Gets a survey. Requires authentication unless the survey is *activated*. Accepts an access token." })
     async findOne(@Param() params: any, @Req() req: Request) {
         const userId = sqlstring.escape(params.id).replace(/'/g, "");
         const survey = await this.surveyService.findOne({_id: userId});
@@ -59,7 +59,7 @@ export class SurveyController {
     @UseGuards(AuthGuard("jwt"))
     @ApiBearerAuth()
     @Post('/create')
-    @ApiOperation({ description: "Create a new survey. Accepts an access token." })
+    @ApiOperation({ description: "Creates a new survey. Accepts an access token." })
     @ApiBody({
         type: SwaggerDto,
         examples: {
@@ -142,7 +142,7 @@ export class SurveyController {
     @UseGuards(AuthGuard("jwt"))
     @ApiBearerAuth()
     @Delete('/delete')
-    @ApiOperation({ description: "Delete a survey. Accepts an access token." }) 
+    @ApiOperation({ description: "Deletes a survey. Accepts an access token." }) 
     @ApiBody({
         type: SwaggerDto,
         examples: {
@@ -217,7 +217,7 @@ export class SurveyController {
     @UseGuards(AuthGuard("jwt"))
     @ApiBearerAuth()
     @Patch('/edit')
-    @ApiOperation({ description: "Edit an existing survey. Accepts an access token." })
+    @ApiOperation({ description: "Edits an existing survey. Accepts an access token." })
     @ApiBody({
         type: SwaggerDto,
         examples: {

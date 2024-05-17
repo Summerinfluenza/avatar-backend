@@ -15,7 +15,7 @@ export class AvatarController {
   @UseGuards(AuthGuard("jwt"))
   @ApiBearerAuth()
   @Post("generate")
-  @ApiOperation({ description: "Generate avatars." })
+  @ApiOperation({ description: "Generate avatars. Returns images as a StreamableFile. Accepts an access token." })
   @ApiBody({
     type: SwaggerDto,
 

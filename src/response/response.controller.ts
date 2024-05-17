@@ -14,7 +14,7 @@ export class ResponseController {
         private readonly responseService: ResponseService) { }
 
     @Post("create")
-    @ApiOperation({ description: "Creates a new response. Returns a JSON file with responseId" })
+    @ApiOperation({ description: "Creates a new response. Returns a responseId." })
     @ApiBody({
         type: SwaggerDto,
         examples: {
@@ -47,7 +47,7 @@ export class ResponseController {
     @UseGuards(AuthGuard("jwt"))
     @ApiBearerAuth()
     @Patch("logprompt")
-    @ApiOperation({ description: "Logs generated prompt string." })
+    @ApiOperation({ description: "Logs generated prompt string. Accepts an access token." })
     @ApiBody({
         type: SwaggerDto,
         examples: {
@@ -83,7 +83,7 @@ export class ResponseController {
     @UseGuards(AuthGuard("jwt"))
     @ApiBearerAuth()
     @Patch("logbuffer")
-    @ApiOperation({ description: "Logs generated image iterations." })
+    @ApiOperation({ description: "Logs generated image iterations. Accepts an access token." })
     @ApiBody({
         type: SwaggerDto,
         examples: {
@@ -119,7 +119,7 @@ export class ResponseController {
     @UseGuards(AuthGuard("jwt"))
     @ApiBearerAuth()
     @Patch("optimize")
-    @ApiOperation({ description: "Passes an array of ratings from frontend to fast-api." })
+    @ApiOperation({ description: "Passes data from frontend to fast-api. Accepts an access token." })
     @ApiBody({
         type: SwaggerDto,
         examples: {
@@ -155,7 +155,7 @@ export class ResponseController {
     @UseGuards(AuthGuard("jwt"))
     @ApiBearerAuth()
     @Post("initialize")
-    @ApiOperation({ description: "Initializes a response, sends data from frontend to fast-api." })
+    @ApiOperation({ description: "Initializes a response, passes data from frontend to fast-api.. Accepts an access token." })
     @ApiBody({
         type: SwaggerDto,
         examples: {
@@ -191,7 +191,7 @@ export class ResponseController {
     @UseGuards(AuthGuard("jwt"))
     @ApiBearerAuth()
     @Post("result")
-    @ApiOperation({ description: "Receives an responseId, logs and returns the end-result JPEG image from the Fast-API." })
+    @ApiOperation({ description: "Logs and returns the end-result JPEG image from the Fast-API. Accepts an access token." })
     @ApiBody({
         type: SwaggerDto,
         examples: {
@@ -224,7 +224,7 @@ export class ResponseController {
     @UseGuards(AuthGuard("jwt"))
     @ApiBearerAuth()
     @Delete("delete")
-    @ApiOperation({ description: "Deletes an existing response." })
+    @ApiOperation({ description: "Deletes an existing response. Accepts an access token." })
     @ApiBody({
         type: SwaggerDto,
         examples: {
@@ -259,7 +259,7 @@ export class ResponseController {
     @UseGuards(AuthGuard("jwt"))
     @ApiBearerAuth()
     @Delete("deleteall")
-    @ApiOperation({ description: "Accepts a JSON object. Returns a JSON object. Deletes all existing responses by regex string. " })
+    @ApiOperation({ description: "Deletes all existing responses by regex string. Accepts an access token." })
     @ApiBody({
         type: SwaggerDto,
         examples: {
